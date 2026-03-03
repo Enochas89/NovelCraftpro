@@ -1,6 +1,7 @@
 # NovelCraft Pro Desktop
 
 Desktop wrapper for the NovelCraft editor using Electron (Windows + macOS).
+![NovelCraft Pro main hero](novelcraft-main-hero.webp)
 
 ## Prerequisites
 
