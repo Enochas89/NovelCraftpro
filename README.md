@@ -3,6 +3,10 @@
 Desktop wrapper for the NovelCraft editor using Electron (Windows + macOS).
 ![NovelCraft Pro main hero](novelcraft-main-hero.webp)
 
+## Project Details
+
+See full project details here: [PROJECT_DETAILS.md](PROJECT_DETAILS.md)
+
 ## Prerequisites
 
 - Node.js 18+ (LTS recommended)
