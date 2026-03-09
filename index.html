@@ -592,6 +592,9 @@
     const AUTO_SAVE_DELAY = 1800;
     const HISTORY_SNAPSHOT_INTERVAL = 120000;
     const DEFAULT_BEAT = "Setup";
+    // Native contenteditable caret is the source of truth.
+    // The fixed-position ghost caret can drift from the actual selection.
+    const ENABLE_CARET_GHOST = false;
     const STORY_BEATS = [
       "Opening Hook",
       "Setup",
@@ -1169,7 +1172,7 @@
       caretEl.innerText = `Caret: P${pageIndex} L${pos.line} C${pos.col}`;
       if (overlay) overlay.innerText = `Caret P${pageIndex} L${pos.line} C${pos.col}`;
 
-      if (!ghost || !range.collapsed) {
+      if (!ghost || !range.collapsed || !ENABLE_CARET_GHOST) {
         hideGhost();
         return;
       }
