@@ -25,6 +25,7 @@ npm run build:win
 ```
 
 Installer output will be created in `dist/`.
+Expected filename: `NovelCraft Pro-Setup-<version>.exe`
 
 ## Signed Windows build (recommended for deployment)
 
@@ -43,11 +44,32 @@ npm run build:win:signed -- -PfxPath "C:\path\to\cert.pfx" -PfxPassword "your-pa
 
 Signed output will be created in `dist_signed/`.
 
+## Windows installer won't open
+
+If a downloaded installer appears to do nothing, it is usually blocked by Windows trust checks:
+
+1. Check signature status:
+
+```powershell
+Get-AuthenticodeSignature ".\dist\NovelCraft Pro-Setup-<version>.exe" | Format-List Status,StatusMessage
+```
+
+2. If the file came from a browser download, remove Mark-of-the-Web:
+
+```powershell
+Unblock-File ".\dist\NovelCraft Pro-Setup-<version>.exe"
+```
+
+3. If `Status` is `NotSigned`, SmartScreen or enterprise policy may block launch. Build a signed installer (`npm run build:win:signed`) or use the portable build (`npm run build:portable`).
+
 ## Build portable Windows app
 
 ```powershell
 npm run build:portable
 ```
+
+Portable output will be created in `dist/`.
+Expected filename: `NovelCraft Pro-Portable-<version>.exe`
 
 ## Build macOS installers (.dmg + .zip)
 
